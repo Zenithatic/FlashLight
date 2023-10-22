@@ -1,7 +1,15 @@
 package components;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.Border;
+
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import listeners.ManageCardsAdapter;
 import main_pkg.Main;
@@ -16,7 +24,6 @@ public class HomePanel extends JPanel{
 		
 		// create welcome label
 		JLabel welcome = new JLabel("Welcome to FlashLight", SwingConstants.CENTER);
-		welcome.setBackground(new Color(255, 255,255));
 		welcome.setMaximumSize(new Dimension(400, 100));
 		welcome.setAlignmentX(0.5f);
 		welcome.setVerticalTextPosition(SwingConstants.CENTER);

@@ -1,12 +1,14 @@
 package components;
 import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainFrame extends JFrame{
 	
 	private HomePanel homePanel;
 	private FolderManagementPanel folderManagementPanel;
+	private CreateFolderPanel createFolderPanel;
 	
 	public MainFrame() {
 		// setup mainframe
@@ -20,6 +22,7 @@ public class MainFrame extends JFrame{
 		this.changePanel(homePanel);
 		
 		folderManagementPanel = new FolderManagementPanel();
+		createFolderPanel = new CreateFolderPanel();
 	}
 	
 	public void changePanel(JPanel panel) {
@@ -36,5 +39,9 @@ public class MainFrame extends JFrame{
 	
 	public FolderManagementPanel getFolderManagementPanel() {
 		return folderManagementPanel;
+	}
+	
+	public CreateFolderPanel getCreateFolderPanel() {
+		return createFolderPanel;
 	}
 }

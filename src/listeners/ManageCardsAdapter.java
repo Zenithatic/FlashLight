@@ -8,5 +8,6 @@ public class ManageCardsAdapter extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Main.getMainFrame().changePanel(Main.getMainFrame().getFolderManagementPanel());
+		Main.getMainFrame().getFolderManagementPanel().reloadTable();
 	}	
 }
