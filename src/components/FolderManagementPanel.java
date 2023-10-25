@@ -15,6 +15,7 @@ import javax.swing.JTable;
 
 import listeners.BackAdapter;
 import listeners.CreateFolderAdapter;
+import listeners.DeleteFolderAdapter;
 import main_pkg.Main;
 import utils.Utils;
 
@@ -40,6 +41,7 @@ public class FolderManagementPanel extends JPanel{
 		topBar.setLayout(new BoxLayout(topBar, BoxLayout.LINE_AXIS));
 		
 		JButton back = new JButton("Back");
+		back.setName("fmpBack");
 		back.addMouseListener(new BackAdapter());
 		back.setMaximumSize(new Dimension(250, 100));
 		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -55,6 +57,7 @@ public class FolderManagementPanel extends JPanel{
 		createFolder.setAlignmentY(0.5f);
 		
 		JButton deleteSelected = new JButton("Delete Selected");
+		deleteSelected.addMouseListener(new DeleteFolderAdapter());
 		deleteSelected.setMaximumSize(new Dimension(250, 100));
 		deleteSelected.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		deleteSelected.setAlignmentX(0.5f);
@@ -155,7 +158,11 @@ public class FolderManagementPanel extends JPanel{
 		return folders.contains(name);
 	}
 	
-	public int getSelectedFolder() {
+	public int getSelected() {
 		return folderTable.getSelectedRow();
+	}
+	
+	public String getFolder(int id) {
+		return folders.get(id);
 	}
 }

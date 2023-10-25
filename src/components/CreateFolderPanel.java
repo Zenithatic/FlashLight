@@ -41,6 +41,7 @@ public class CreateFolderPanel extends JPanel{
 		
 		// make cancel folder button
 		JButton cancelButton = new JButton("Cancel");
+		cancelButton.setName("createFolderBack");
 		cancelButton.addMouseListener(new BackAdapter());
 		cancelButton.setFont(Main.defaultFont);
 		cancelButton.setAlignmentX(0.5f);

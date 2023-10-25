@@ -8,6 +8,14 @@ import main_pkg.Main;
 public class BackAdapter extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		Main.getMainFrame().changePanel(Main.getMainFrame().getHomePanel());
+		
+		String compName = e.getComponent().getName();
+		
+		if (compName.equals("fmpBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getHomePanel());
+		}
+		else if (compName.equals("createFolderBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getFolderManagementPanel());
+		}
 	}	
 }

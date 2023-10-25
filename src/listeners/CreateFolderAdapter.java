@@ -3,7 +3,6 @@ package listeners;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import components.MainFrame;
 import main_pkg.Main;
 
 public class CreateFolderAdapter extends MouseAdapter{
