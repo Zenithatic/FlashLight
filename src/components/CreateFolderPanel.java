@@ -47,7 +47,7 @@ public class CreateFolderPanel extends JPanel{
 		cancelButton.setAlignmentX(0.5f);
 		cancelButton.setMaximumSize(new Dimension(400, 100));
 		
-		
+		// add everything to main panel
 		this.add(title);
 		this.add(name);
 		this.add(Box.createRigidArea(new Dimension(0, 50)));

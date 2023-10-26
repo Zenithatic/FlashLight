@@ -8,7 +8,6 @@ import main_pkg.Main;
 public class BackAdapter extends MouseAdapter{
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
 		String compName = e.getComponent().getName();
 		
 		if (compName.equals("fmpBack")) {

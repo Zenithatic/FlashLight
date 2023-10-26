@@ -3,6 +3,8 @@ package listeners;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import components.CreateFolderPanel;
+import components.FolderManagementPanel;
 import main_pkg.Main;
 
 public class CreateFolderAdapter extends MouseAdapter{
@@ -14,25 +16,28 @@ public class CreateFolderAdapter extends MouseAdapter{
 			Main.getMainFrame().getCreateFolderPanel().setFieldText("");
 		}
 		else if (e.getComponent().getName().equals("createFolder")) {
+			FolderManagementPanel fmp = Main.getMainFrame().getFolderManagementPanel();
+			CreateFolderPanel cfp = Main.getMainFrame().getCreateFolderPanel();
+			
 			String folderToCreate = Main.getMainFrame().getCreateFolderPanel().getText();
 			
-			if (Main.getMainFrame().getFolderManagementPanel().hasFolder(folderToCreate)) {
-				Main.getMainFrame().getCreateFolderPanel().setTitleText("Error: Folder already exists.");
+			if (fmp.hasFolderName(folderToCreate)) {
+				cfp.setTitleText("Error: Folder already exists.");
 			}
 			else {
-				int error = Main.getMainFrame().getFolderManagementPanel().createFolder(folderToCreate);
+				int error = fmp.createFolder(folderToCreate);
 				
 				if (error == 0) {
-					Main.getMainFrame().getCreateFolderPanel().setTitleText("Folder: " + folderToCreate + " created.");
+					cfp.setTitleText("Folder: " + folderToCreate + " created.");
 				}
 				else if (error == 1){
-					Main.getMainFrame().getCreateFolderPanel().setTitleText("Error: Name too short.");
+					cfp.setTitleText("Error: Name too short.");
 				}
 				else if (error == 2) {
-					Main.getMainFrame().getCreateFolderPanel().setTitleText("Error: Invalid symbols in name.");
+					cfp.setTitleText("Error: Invalid symbols in name.");
 				}
 				
-				Main.getMainFrame().getCreateFolderPanel().setFieldText("");
+				cfp.setFieldText("");
 			}
 		}
 	}

@@ -2,12 +2,14 @@ package utils;
 
 import java.util.ArrayList;
 
+import my_classes.Folder;
+
 public class Utils {
-	public static String[][] folderArrListToArr(ArrayList<String> arrayList){
-		String[][] converted = new String[arrayList.size()][1];
+	public static String[][] folderArrListToArr(ArrayList<Folder> folders){
+		String[][] converted = new String[folders.size()][1];
 		
-		for (int i = 0; i < arrayList.size(); i++) {
-			String[] temp = {arrayList.get(i)};
+		for (int i = 0; i < folders.size(); i++) {
+			String[] temp = {folders.get(i).getName()};
 			converted[i] = temp;
 		}
 		
