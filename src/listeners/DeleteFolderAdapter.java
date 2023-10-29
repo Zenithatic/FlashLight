@@ -13,7 +13,7 @@ public class DeleteFolderAdapter extends MouseAdapter{
 		FolderManagementPanel fmp = Main.getMainFrame().getFolderManagementPanel();
 		int selectedRow = fmp.getSelected();
 		String folderName;
-		
+
 		if (selectedRow == -1) {
 			return;
 		}

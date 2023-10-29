@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import listeners.BackAdapter;
 import listeners.CreateFolderAdapter;
 import listeners.DeleteFolderAdapter;
+import listeners.ManageCardsAdapter;
 import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
@@ -70,6 +71,7 @@ public class FolderManagementPanel extends JPanel{
 		
 		// setup open selected folder button
 		JButton openSelected = new JButton("Open Selected");
+		openSelected.addMouseListener(new ManageCardsAdapter());
 		openSelected.setMaximumSize(new Dimension(250, 100));
 		openSelected.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		openSelected.setAlignmentX(0.5f);
@@ -149,6 +151,7 @@ public class FolderManagementPanel extends JPanel{
 		
 		tableScrollPane.setViewportView(null);
 		tableScrollPane.setViewportView(folderTable);	
+		folderTable.getTableHeader().setReorderingAllowed(false);
 	}
 	
 	public int createFolder(String name) {	

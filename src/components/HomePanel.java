@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import listeners.ManageCardsAdapter;
+import listeners.ManageFoldersAdapter;
 import main_pkg.Main;
 
 public class HomePanel extends JPanel{
@@ -35,7 +35,7 @@ public class HomePanel extends JPanel{
 		manageCards.setAlignmentX(0.5f);
 		manageCards.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		manageCards.setFont(Main.titleFont);
-		manageCards.addMouseListener(new ManageCardsAdapter());
+		manageCards.addMouseListener(new ManageFoldersAdapter());
 		
 		// create manage cards button
 		JButton viewCards = new JButton("View Cards");
