@@ -10,6 +10,7 @@ public class MainFrame extends JFrame{
 	private FolderManagementPanel folderManagementPanel;
 	private CreateFolderPanel createFolderPanel;
 	private CardManagementPanel cardManagementPanel;
+	private CreateCardPanel createCardPanel;
 	
 	public MainFrame() {
 		// setup mainframe
@@ -25,6 +26,7 @@ public class MainFrame extends JFrame{
 		folderManagementPanel = new FolderManagementPanel();
 		createFolderPanel = new CreateFolderPanel();
 		cardManagementPanel = new CardManagementPanel();
+		createCardPanel = new CreateCardPanel();
 	}
 	
 	public void changePanel(JPanel panel) {
@@ -49,5 +51,9 @@ public class MainFrame extends JFrame{
 
 	public CardManagementPanel getCardManagementPanel() {
 		return cardManagementPanel;
+	}
+	
+	public CreateCardPanel getCreateCardPanel() {
+		return createCardPanel;
 	}
 }

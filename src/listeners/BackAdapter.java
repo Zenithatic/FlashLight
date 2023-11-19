@@ -19,5 +19,8 @@ public class BackAdapter extends MouseAdapter{
 		else if (compName.equals("cmpBack")) {
 			Main.getMainFrame().changePanel(Main.getMainFrame().getFolderManagementPanel());
 		}
+		else if (compName.equals("createCardBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getCardManagementPanel());
+		}
 	}	
 }

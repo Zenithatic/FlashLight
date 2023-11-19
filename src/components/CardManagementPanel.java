@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 import listeners.BackAdapter;
+import listeners.CreateCardAdapter;
 import listeners.CreateFolderAdapter;
 import listeners.DeleteFolderAdapter;
 import listeners.ManageCardsAdapter;
@@ -63,6 +64,7 @@ public class CardManagementPanel extends JPanel{
 		// setup create folder button
 		JButton createCard = new JButton("Create Card");
 		createCard.setName("openCreateCardPanel");
+		createCard.addMouseListener(new CreateCardAdapter());
 		createCard.setMaximumSize(new Dimension(333, 100));
 		createCard.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		createCard.setAlignmentX(0.5f);
@@ -99,11 +101,48 @@ public class CardManagementPanel extends JPanel{
 		cardView.add(tableScrollPane);
 		cardView.add(Box.createRigidArea(new Dimension(30, 0)));
 		
+		// setup bottom bar
+		JPanel botBar = new JPanel();
+		botBar.setAlignmentX(0.5f);
+		botBar.setBackground(Main.color1);
+		botBar.setMaximumSize(new Dimension(1000, 100));
+		botBar.setLayout(new BoxLayout(botBar, BoxLayout.LINE_AXIS));
+		
+		// setup sort a-z button
+		JButton sortAZ = new JButton("Sort A-Z");
+		sortAZ.setName("sortaz");
+		sortAZ.setMaximumSize(new Dimension(500, 100));
+		sortAZ.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		sortAZ.setAlignmentX(0.5f);
+		sortAZ.setAlignmentY(0.5f);
+		
+		// setup sort by time button
+		JButton sortTime = new JButton("Sort by Time Created");
+		sortTime.setName("sorttime");
+		sortTime.setMaximumSize(new Dimension(500, 100));
+		sortTime.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		sortTime.setAlignmentX(0.5f);
+		sortTime.setAlignmentY(0.5f);
+		
+		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
+		botBar.add(sortAZ);
+		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
+		botBar.add(sortTime);
+		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
+		
+		
+		// add everything to panel
 		this.add(title);	
 		this.add(topBar);
 		this.add(Box.createRigidArea(new Dimension(0, 30)));
 		this.add(cardView);
 		this.add(Box.createRigidArea(new Dimension(0, 30)));
+		this.add(botBar);
+		this.add(Box.createRigidArea(new Dimension(0, 30)));
+	}
+	
+	public Folder getCurrentFolder() {
+		return this.currentFolder;
 	}
 	
 	public void setCurrentFolder(Folder folder) {
