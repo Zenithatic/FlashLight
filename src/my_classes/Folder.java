@@ -86,4 +86,8 @@ public class Folder {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteCard(int index) {
+		cards.remove(index);
+	}
 }

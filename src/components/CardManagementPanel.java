@@ -3,24 +3,19 @@ package components;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.table.TableCellRenderer;
 
 import listeners.BackAdapter;
 import listeners.CreateCardAdapter;
-import listeners.CreateFolderAdapter;
-import listeners.DeleteFolderAdapter;
-import listeners.ManageCardsAdapter;
+import listeners.DeleteCardAdapter;
 import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
@@ -72,6 +67,7 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup delete folder button
 		JButton deleteSelected = new JButton("Delete Selected");
+		deleteSelected.addMouseListener(new DeleteCardAdapter());
 		deleteSelected.setMaximumSize(new Dimension(250, 100));
 		deleteSelected.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		deleteSelected.setAlignmentX(0.5f);
@@ -181,5 +177,9 @@ public class CardManagementPanel extends JPanel{
 
 	        cardsTable.setRowHeight(row, rowHeight);
 	    }
+	}
+	
+	public int getSelectedRow() {
+		return cardsTable.getSelectedRow();
 	}
 }
