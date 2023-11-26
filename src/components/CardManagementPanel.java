@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
 import listeners.BackAdapter;
+import listeners.CardSortAdapter;
 import listeners.CreateCardAdapter;
 import listeners.DeleteCardAdapter;
 import main_pkg.Main;
@@ -106,7 +107,8 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup sort a-z button
 		JButton sortAZ = new JButton("Sort A-Z");
-		sortAZ.setName("sortaz");
+		sortAZ.setName("CardSortAZ");
+		sortAZ.addMouseListener(new CardSortAdapter());
 		sortAZ.setMaximumSize(new Dimension(500, 100));
 		sortAZ.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		sortAZ.setAlignmentX(0.5f);
@@ -114,7 +116,8 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup sort by time button
 		JButton sortTime = new JButton("Sort by Time Created");
-		sortTime.setName("sorttime");
+		sortTime.setName("CardSortTime");
+		sortTime.addMouseListener(new CardSortAdapter());
 		sortTime.setMaximumSize(new Dimension(500, 100));
 		sortTime.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		sortTime.setAlignmentX(0.5f);

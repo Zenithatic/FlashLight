@@ -90,4 +90,84 @@ public class Folder {
 	public void deleteCard(int index) {
 		cards.remove(index);
 	}
+	
+	public void sortAZ(ArrayList<Card> list) {
+		if (list.size() >= 2) {
+			int midIndex = list.size() / 2;
+			
+			ArrayList<Card> left = new ArrayList<Card>();
+			left.addAll(list.subList(0, midIndex));
+			
+			ArrayList<Card> right = new ArrayList<Card>();
+			right.addAll(list.subList(midIndex, list.size()));
+			
+			sortAZ(left);
+			sortAZ(right);
+			mergeAZ(list, left, right);
+		}
+	}
+	
+	private void mergeAZ(ArrayList<Card> parent, ArrayList<Card> left, ArrayList<Card> right) {
+		// i: left index, j: right index, k: parent index
+		int i = 0, j = 0, k = 0;
+		
+		while (i < left.size() && j < right.size()) {
+			if (left.get(i).getTitle().compareTo(right.get(j).getTitle()) <= 0) {
+				parent.set(k, left.get(i));
+				k++; i++;
+			}
+			else {
+				parent.set(k, right.get(j));
+				k++; j++;
+			}
+		}
+		while (i < left.size()) {
+			parent.set(k, left.get(i));
+			k++; i++;
+		}
+		while (j < right.size()) {
+			parent.set(k, right.get(j));
+			k++; j++;
+		}
+	}
+	
+	public void sortDate(ArrayList<Card> list) {
+		if (list.size() >= 2) {
+			int midIndex = list.size() / 2;
+			
+			ArrayList<Card> left = new ArrayList<Card>();
+			left.addAll(list.subList(0, midIndex));
+			
+			ArrayList<Card> right = new ArrayList<Card>();
+			right.addAll(list.subList(midIndex, list.size()));
+			
+			sortDate(left);
+			sortDate(right);
+			mergeDate(list, left, right);
+		}
+	}
+	
+	private void mergeDate(ArrayList<Card> parent, ArrayList<Card> left, ArrayList<Card> right) {
+		// i: left index, j: right index, k: parent index
+		int i = 0, j = 0, k = 0;
+		
+		while (i < left.size() && j < right.size()) {
+			if (left.get(i).getLastModified() <= right.get(j).getLastModified()) {
+				parent.set(k, left.get(i));
+				k++; i++;
+			}
+			else {
+				parent.set(k, right.get(j));
+				k++; j++;
+			}
+		}
+		while (i < left.size()) {
+			parent.set(k, left.get(i));
+			k++; i++;
+		}
+		while (j < right.size()) {
+			parent.set(k, right.get(j));
+			k++; j++;
+		}
+	}
 }
