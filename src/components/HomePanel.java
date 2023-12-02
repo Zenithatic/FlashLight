@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import listeners.ManageFoldersAdapter;
+import listeners.ViewFolderAdapter;
 import main_pkg.Main;
 
 public class HomePanel extends JPanel{
@@ -38,10 +39,12 @@ public class HomePanel extends JPanel{
 		
 		// create manage cards button
 		JButton viewCards = new JButton("View Cards");
+		viewCards.setName("view1");
 		viewCards.setMaximumSize(new Dimension(400, 300));
 		viewCards.setAlignmentX(0.5f);
 		viewCards.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		viewCards.setFont(Main.titleFont);
+		viewCards.addMouseListener(new ViewFolderAdapter());
 		
 		// add components to panel
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
