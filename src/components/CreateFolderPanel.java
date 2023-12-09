@@ -13,7 +13,7 @@ public class CreateFolderPanel extends JPanel{
 	JLabel title;
 	
 	public CreateFolderPanel() {
-		// setup folder management panel
+		// setup create folder panel
 		this.setSize(Main.defaultDimension);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Main.color1);

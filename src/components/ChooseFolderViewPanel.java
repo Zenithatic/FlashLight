@@ -19,6 +19,7 @@ import listeners.BackAdapter;
 import listeners.CreateFolderAdapter;
 import listeners.DeleteFolderAdapter;
 import listeners.ManageCardsAdapter;
+import listeners.OpenTableAdapter;
 import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
@@ -32,7 +33,7 @@ public class ChooseFolderViewPanel extends JPanel{
 		// initialize folders array list
 		folders = new ArrayList<Folder>();
 		
-		// setup folder management panel
+		// setup choose folder view panel
 		this.setSize(Main.defaultDimension);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Main.color1);
@@ -53,29 +54,30 @@ public class ChooseFolderViewPanel extends JPanel{
 		back.setAlignmentX(0.5f);
 		back.setAlignmentY(0.5f);
 		
-		// setup create folder button
-		JButton createFolder = new JButton("Open in slideshow view");
-		createFolder.setName("openSlide");
-		createFolder.setMaximumSize(new Dimension(250, 100));
-		createFolder.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		createFolder.setAlignmentX(0.5f);
-		createFolder.setAlignmentY(0.5f);
+		// setup open slideshow button
+		JButton openSlide = new JButton("Open in slideshow view");
+		openSlide.setName("openSlide");
+		openSlide.setMaximumSize(new Dimension(250, 100));
+		openSlide.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		openSlide.setAlignmentX(0.5f);
+		openSlide.setAlignmentY(0.5f);
 		
-		// setup delete folder button
-		JButton deleteSelected = new JButton("Open in table view");
-		createFolder.setName("openTable");
-		deleteSelected.setMaximumSize(new Dimension(250, 100));
-		deleteSelected.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		deleteSelected.setAlignmentX(0.5f);
-		deleteSelected.setAlignmentY(0.5f);
+		// setup open table view button
+		JButton openTable = new JButton("Open in table view");
+		openTable.setName("openTable");
+		openTable.addMouseListener(new OpenTableAdapter());
+		openTable.setMaximumSize(new Dimension(250, 100));
+		openTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		openTable.setAlignmentX(0.5f);
+		openTable.setAlignmentY(0.5f);
 		
 		// add above buttons to topbar panel
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		topBar.add(back);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
-		topBar.add(createFolder);
+		topBar.add(openSlide);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
-		topBar.add(deleteSelected);
+		topBar.add(openTable);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		
 		// setup scroll panel for JTable

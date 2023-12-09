@@ -37,7 +37,7 @@ public class HomePanel extends JPanel{
 		manageCards.setFont(Main.titleFont);
 		manageCards.addMouseListener(new ManageFoldersAdapter());
 		
-		// create manage cards button
+		// create view cards button
 		JButton viewCards = new JButton("View Cards");
 		viewCards.setName("view1");
 		viewCards.setMaximumSize(new Dimension(400, 300));

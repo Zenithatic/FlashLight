@@ -15,20 +15,18 @@ import javax.swing.SwingConstants;
 
 import listeners.BackAdapter;
 import listeners.CardSortAdapter;
-import listeners.CreateCardAdapter;
-import listeners.DeleteCardAdapter;
 import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
 
-public class CardManagementPanel extends JPanel{
+public class TableViewPanel extends JPanel{
 	private Folder currentFolder;
 	private JScrollPane tableScrollPane;
 	private JTable cardsTable;
 	private JLabel title;
 	
-	public CardManagementPanel() {	
-		// setup card management panel
+	public TableViewPanel() {	
+		// setup table view panel
 		this.setSize(Main.defaultDimension);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Main.color1);
@@ -50,37 +48,16 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup back button
 		JButton back = new JButton("Back");
-		back.setName("cmpBack");
+		back.setName("tvBack");
 		back.addMouseListener(new BackAdapter());
-		back.setMaximumSize(new Dimension(333, 100));
+		back.setMaximumSize(new Dimension(1000, 100));
 		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		back.setAlignmentX(0.5f);
 		back.setAlignmentY(0.5f);
 		
-		// setup create card button
-		JButton createCard = new JButton("Create Card");
-		createCard.setName("openCreateCardPanel");
-		createCard.addMouseListener(new CreateCardAdapter());
-		createCard.setMaximumSize(new Dimension(333, 100));
-		createCard.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		createCard.setAlignmentX(0.5f);
-		createCard.setAlignmentY(0.5f);
-		
-		// setup delete card button
-		JButton deleteSelected = new JButton("Delete Selected");
-		deleteSelected.addMouseListener(new DeleteCardAdapter());
-		deleteSelected.setMaximumSize(new Dimension(250, 100));
-		deleteSelected.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		deleteSelected.setAlignmentX(0.5f);
-		deleteSelected.setAlignmentY(0.5f);
-		
 		// add above buttons to topbar panel
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		topBar.add(back);
-		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
-		topBar.add(createCard);
-		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
-		topBar.add(deleteSelected);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		
 		// setup scroll panel for JTable
@@ -93,7 +70,7 @@ public class CardManagementPanel extends JPanel{
 		// setup scroll pane
 		tableScrollPane = new JScrollPane();
 		
-		// add table view to folder view panel
+		// add table view to card view panel
 		cardView.add(Box.createRigidArea(new Dimension(30, 0)));
 		cardView.add(tableScrollPane);
 		cardView.add(Box.createRigidArea(new Dimension(30, 0)));
@@ -107,7 +84,7 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup sort a-z button
 		JButton sortAZ = new JButton("Sort A-Z");
-		sortAZ.setName("CardSortAZ");
+		sortAZ.setName("ViewCardSortAZ");
 		sortAZ.addMouseListener(new CardSortAdapter());
 		sortAZ.setMaximumSize(new Dimension(500, 100));
 		sortAZ.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -116,7 +93,7 @@ public class CardManagementPanel extends JPanel{
 		
 		// setup sort by time button
 		JButton sortTime = new JButton("Sort by Time Created");
-		sortTime.setName("CardSortTime");
+		sortTime.setName("ViewCardSortTime");
 		sortTime.addMouseListener(new CardSortAdapter());
 		sortTime.setMaximumSize(new Dimension(500, 100));
 		sortTime.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -128,7 +105,6 @@ public class CardManagementPanel extends JPanel{
 		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		botBar.add(sortTime);
 		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
-		
 		
 		// add everything to panel
 		this.add(title);	
@@ -180,9 +156,5 @@ public class CardManagementPanel extends JPanel{
 
 	        cardsTable.setRowHeight(row, rowHeight);
 	    }
-	}
-	
-	public int getSelectedRow() {
-		return cardsTable.getSelectedRow();
 	}
 }

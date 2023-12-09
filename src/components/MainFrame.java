@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import listeners.ViewFolderAdapter;
+
 public class MainFrame extends JFrame{
 	
 	private HomePanel homePanel;
@@ -12,6 +14,7 @@ public class MainFrame extends JFrame{
 	private CardManagementPanel cardManagementPanel;
 	private CreateCardPanel createCardPanel;
 	private ChooseFolderViewPanel chooseFolderViewPanel;
+	private TableViewPanel tableViewPanel;
 	
 	public MainFrame() {
 		// setup mainframe
@@ -29,6 +32,7 @@ public class MainFrame extends JFrame{
 		cardManagementPanel = new CardManagementPanel();
 		createCardPanel = new CreateCardPanel();
 		chooseFolderViewPanel = new ChooseFolderViewPanel();
+		tableViewPanel = new TableViewPanel();
 	}
 	
 	public void changePanel(JPanel panel) {
@@ -61,5 +65,9 @@ public class MainFrame extends JFrame{
 
 	public ChooseFolderViewPanel getChooseFolderViewPanel() {
 		return chooseFolderViewPanel;
+	}
+
+	public TableViewPanel getTableViewPanel() {
+		return tableViewPanel;
 	}
 }

@@ -25,5 +25,8 @@ public class BackAdapter extends MouseAdapter{
 		else if (compName.equals("cfvBack")) {
 			Main.getMainFrame().changePanel(Main.getMainFrame().getHomePanel());
 		}
+		else if (compName.equals("tvBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getChooseFolderViewPanel());
+		}
 	}	
 }
