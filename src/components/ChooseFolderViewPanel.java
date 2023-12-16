@@ -19,7 +19,7 @@ import listeners.BackAdapter;
 import listeners.CreateFolderAdapter;
 import listeners.DeleteFolderAdapter;
 import listeners.ManageCardsAdapter;
-import listeners.OpenTableAdapter;
+import listeners.OpenViewAdapter;
 import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
@@ -57,6 +57,7 @@ public class ChooseFolderViewPanel extends JPanel{
 		// setup open slideshow button
 		JButton openSlide = new JButton("Open in slideshow view");
 		openSlide.setName("openSlide");
+		openSlide.addMouseListener(new OpenViewAdapter());
 		openSlide.setMaximumSize(new Dimension(250, 100));
 		openSlide.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		openSlide.setAlignmentX(0.5f);
@@ -65,7 +66,7 @@ public class ChooseFolderViewPanel extends JPanel{
 		// setup open table view button
 		JButton openTable = new JButton("Open in table view");
 		openTable.setName("openTable");
-		openTable.addMouseListener(new OpenTableAdapter());
+		openTable.addMouseListener(new OpenViewAdapter());
 		openTable.setMaximumSize(new Dimension(250, 100));
 		openTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		openTable.setAlignmentX(0.5f);
