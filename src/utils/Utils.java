@@ -27,29 +27,7 @@ public class Utils {
 		return converted;
 	}
 	
-	public static String convertFitHTML(String string) {
-		String newString = "";
-		boolean addBr = false;
-		
-		for (int i = 0; i < string.length(); i++) {
-			if (i % 60 == 0 && i != 0) {
-				addBr = true;
-			}
-			
-			if (string.charAt(i) == ' ') {
-				if (addBr == true) {
-					addBr = false;
-					newString += "<br>";
-				}
-				else {
-					newString += " ";
-				}
-			}
-			else {
-				newString = newString + string.charAt(i);
-			}
-		}
-		
-		return "<html>" + newString + "</html>";
+	public static String convertFitHTML(String string) {	
+		return "<html>" + string + "</html>";
 	}
 }

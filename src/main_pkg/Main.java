@@ -2,6 +2,7 @@ package main_pkg;
 import java.awt.*;
 
 import components.MainFrame;
+import utils.Utils;
 
 public class Main{
 	// set static fields

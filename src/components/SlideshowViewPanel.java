@@ -15,9 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 
 import listeners.BackAdapter;
 import listeners.FlipAdapter;
+import listeners.PreviousNextAdapter;
 import listeners.ShuffleAdapter;
 import main_pkg.Main;
 import my_classes.Card;
@@ -101,6 +104,9 @@ public class SlideshowViewPanel extends JPanel{
 		mainCard.setFont(Main.defaultFont);
 		mainCard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		mainCard.setMaximumSize(new Dimension(1000, 400));
+		mainCard.setBackground(Color.WHITE);
+		mainCard.setBorder(new CompoundBorder(mainCard.getBorder(), new EmptyBorder(20, 30, 20, 30)));
+		mainCard.setOpaque(true);
 		
 		// add card view to view panel
 		cardView.add(Box.createRigidArea(new Dimension(30, 0)));
@@ -117,6 +123,7 @@ public class SlideshowViewPanel extends JPanel{
 		// setup previous button 
 		JButton previous = new JButton("Previous");
 		previous.setName("previous");
+		previous.addMouseListener(new PreviousNextAdapter());
 		previous.setMaximumSize(new Dimension(333, 100));
 		previous.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		previous.setAlignmentX(0.5f);
@@ -134,6 +141,7 @@ public class SlideshowViewPanel extends JPanel{
 		// setup next button
 		JButton next = new JButton("Next");
 		next.setName("next");
+		next.addMouseListener(new PreviousNextAdapter());
 		next.setMaximumSize(new Dimension(333, 100));
 		next.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		next.setAlignmentX(0.5f);
@@ -192,6 +200,24 @@ public class SlideshowViewPanel extends JPanel{
 		else {
 			flipped = true;
 			mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getDescription()));
+		}
+	}
+	
+	public void next() {
+		if (curCardIndex < cards.size() - 1) {
+			curCardIndex++;
+			flipped = false;
+			current.setText("Card: "+ (curCardIndex + 1) + "/" + cards.size());
+			mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getTitle()));
+		}
+	}
+	
+	public void previous() {
+		if (curCardIndex > 0) {
+			curCardIndex--;
+			flipped = false;
+			current.setText("Card: "+ (curCardIndex + 1) + "/" + cards.size());
+			mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getTitle()));
 		}
 	}
 }
