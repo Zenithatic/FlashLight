@@ -112,7 +112,7 @@ public class Folder {
 		int i = 0, j = 0, k = 0;
 		
 		while (i < left.size() && j < right.size()) {
-			if (left.get(i).getTitle().compareTo(right.get(j).getTitle()) <= 0) {
+			if (left.get(i).getTitle().toLowerCase().compareTo(right.get(j).getTitle().toLowerCase()) <= 0) {
 				parent.set(k, left.get(i));
 				k++; i++;
 			}
