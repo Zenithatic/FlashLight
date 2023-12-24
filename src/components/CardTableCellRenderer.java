@@ -13,7 +13,7 @@ public class CardTableCellRenderer extends JTextArea implements TableCellRendere
 	public CardTableCellRenderer() {
 		setWrapStyleWord(true);
 		setLineWrap(true);
-		setPreferredSize(new Dimension(300, 40));
+		setPreferredSize(new Dimension(300, 50));
 	}
 
 	@Override

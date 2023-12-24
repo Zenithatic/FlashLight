@@ -1,9 +1,12 @@
 package components;
 
+import utils.Utils;
+
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -11,20 +14,22 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import listeners.BackAdapter;
-import listeners.CardSortAdapter;
+import listeners.FlipAdapter;
+import listeners.ShuffleAdapter;
 import main_pkg.Main;
+import my_classes.Card;
 import my_classes.Folder;
-import utils.Utils;
 
 public class SlideshowViewPanel extends JPanel{
 	private Folder currentFolder;
-	
+	private ArrayList<Card> cards;
+	private int curCardIndex;
+	private boolean flipped;
+	private JLabel current;
+	private JLabel mainCard;
 	private JLabel title;
 	
 	public SlideshowViewPanel() {	
@@ -52,16 +57,24 @@ public class SlideshowViewPanel extends JPanel{
 		JButton back = new JButton("Back");
 		back.setName("svBack");
 		back.addMouseListener(new BackAdapter());
-		back.setMaximumSize(new Dimension(500, 100));
+		back.setMaximumSize(new Dimension(333, 100));
 		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		back.setAlignmentX(0.5f);
 		back.setAlignmentY(0.5f);
 		
+		// setup current card count
+		current = new JLabel("", SwingConstants.CENTER);
+		current.setMaximumSize(new Dimension(333, 100));
+		current.setAlignmentX(0.5f);
+		current.setAlignmentY(0.5f);
+		current.setVerticalTextPosition(SwingConstants.CENTER);
+		current.setFont(Main.defaultFont);
+		
 		// setup shuffle button
 		JButton shuffle = new JButton("Shuffle");
 		shuffle.setName("shuffle");
-		// shuffle.addMouseListener(new BackAdapter());
-		shuffle.setMaximumSize(new Dimension(500, 100));
+		shuffle.addMouseListener(new ShuffleAdapter());
+		shuffle.setMaximumSize(new Dimension(333, 100));
 		shuffle.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		shuffle.setAlignmentX(0.5f);
 		shuffle.setAlignmentY(0.5f);
@@ -69,6 +82,8 @@ public class SlideshowViewPanel extends JPanel{
 		// add above buttons to topbar panel
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		topBar.add(back);
+		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
+		topBar.add(current);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		topBar.add(shuffle);
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
@@ -81,12 +96,10 @@ public class SlideshowViewPanel extends JPanel{
 		cardView.setLayout(new BoxLayout(cardView, BoxLayout.LINE_AXIS));
 		
 		// setup card slide
-		JTextArea mainCard = new JTextArea();
+		mainCard = new JLabel("", SwingConstants.CENTER);
+		mainCard.setVerticalAlignment(SwingConstants.CENTER);
+		mainCard.setFont(Main.defaultFont);
 		mainCard.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		mainCard.setWrapStyleWord(true);
-		mainCard.setLineWrap(true);
-		mainCard.setEditable(false);
-		mainCard.setFocusable(false);
 		mainCard.setMaximumSize(new Dimension(1000, 400));
 		
 		// add card view to view panel
@@ -114,6 +127,7 @@ public class SlideshowViewPanel extends JPanel{
 		flip.setName("flip");
 		flip.setMaximumSize(new Dimension(333, 100));
 		flip.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		flip.addMouseListener(new FlipAdapter());
 		flip.setAlignmentX(0.5f);
 		flip.setAlignmentY(0.5f);
 		
@@ -125,6 +139,7 @@ public class SlideshowViewPanel extends JPanel{
 		next.setAlignmentX(0.5f);
 		next.setAlignmentY(0.5f);
 		
+		// add everything to bottom bar
 		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		botBar.add(previous);
 		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
@@ -147,9 +162,36 @@ public class SlideshowViewPanel extends JPanel{
 		return this.currentFolder;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void setCurrentFolder(Folder folder) {
 		this.currentFolder = folder;
 		title.setText("Folder: " + currentFolder.getName());
 		folder.reloadCards();
+		
+		// setup first card display
+		cards = (ArrayList<Card>) currentFolder.getCards().clone();
+		curCardIndex = 0;
+		current.setText("Card: 1/" + cards.size());
+		flipped = false;
+		mainCard.setText(cards.get(curCardIndex).getTitle());
+	}
+	
+	public void shuffle() {
+		Collections.shuffle(cards);
+		curCardIndex = 0;
+		current.setText("Card: 1/" + cards.size());
+		flipped = false;
+		mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getTitle()));
+	}
+	
+	public void flip() {
+		if (flipped == true) {
+			flipped = false;
+			mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getTitle()));
+		}
+		else {
+			flipped = true;
+			mainCard.setText(Utils.convertFitHTML(cards.get(curCardIndex).getDescription()));
+		}
 	}
 }

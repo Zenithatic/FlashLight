@@ -2,23 +2,17 @@ package components;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import listeners.BackAdapter;
-import listeners.CreateFolderAdapter;
-import listeners.DeleteFolderAdapter;
-import listeners.ManageCardsAdapter;
 import listeners.OpenViewAdapter;
 import main_pkg.Main;
 import my_classes.Folder;

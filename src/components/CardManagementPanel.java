@@ -129,7 +129,6 @@ public class CardManagementPanel extends JPanel{
 		botBar.add(sortTime);
 		botBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		
-		
 		// add everything to panel
 		this.add(title);	
 		this.add(topBar);
