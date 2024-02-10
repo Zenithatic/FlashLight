@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import components.MCQuizPanel;
 import components.SelectQuizPanel;
+import components.TFQuizPanel;
 import main_pkg.Main;
 import my_classes.MCQuiz;
 import my_classes.TFQuestion;
@@ -61,16 +62,10 @@ public class QuizAdapter extends MouseAdapter {
 			}
 			
 			TFQuiz quiz = new TFQuiz(sqp.getFolder(sqp.getSelected()));
-			TFQuestion curQ = quiz.getNext();
 			
-			while (curQ != null) {
-				System.out.println("Title: " + curQ.getTitle());
-				System.out.println("Desc: " + curQ.getDescription());
-				System.out.println("Answer: " + curQ.getAnswer());
-				System.out.println("\n");
-				
-				curQ = quiz.getNext();
-			}
+			TFQuizPanel tfqp = Main.getMainFrame().getTfQuizPanel();
+			tfqp.setQuiz(quiz);
+			Main.getMainFrame().changePanel(Main.getMainFrame().getTfQuizPanel());
 			
 		}
 		else if (compName.equals("mcNextQuestion")) {
@@ -78,6 +73,12 @@ public class QuizAdapter extends MouseAdapter {
 		}
 		else if (compName.equals("revealAnsMC")) {
 			Main.getMainFrame().getMcQuizPanel().revealAns();
+		}
+		else if (compName.equals("tfNextQuestion")) {
+			Main.getMainFrame().getTfQuizPanel().nextQuestion();
+		}
+		else if (compName.equals("revealAnsTF")) {
+			Main.getMainFrame().getTfQuizPanel().revealAns();
 		}
 	}
 }

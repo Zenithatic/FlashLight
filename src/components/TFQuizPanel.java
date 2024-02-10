@@ -3,7 +3,6 @@ package components;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -17,19 +16,19 @@ import javax.swing.SwingConstants;
 import listeners.BackAdapter;
 import listeners.QuizAdapter;
 import main_pkg.Main;
-import my_classes.MCQuestion;
-import my_classes.MCQuiz;
+import my_classes.TFQuestion;
+import my_classes.TFQuiz;
 
 @SuppressWarnings("serial")
-public class MCQuizPanel extends JPanel{
-	private MCQuiz curQuiz;
-	private MCQuestion curQuestion;
+public class TFQuizPanel extends JPanel{
+	private TFQuiz curQuiz;
+	private TFQuestion curQuestion;
 	private JLabel quizTitle;
 	private JTextArea titleArea;
-	private JTextArea optionArea;
+	private JTextArea descArea;
 	
-	public MCQuizPanel() {
-		// setup MC quiz panel
+	public TFQuizPanel() {
+		// setup TF quiz panel
 		this.setSize(Main.defaultDimension);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Main.color1);
@@ -50,7 +49,7 @@ public class MCQuizPanel extends JPanel{
 		
 		// setup back button
 		JButton back = new JButton("Back");
-		back.setName("mcQuizBack");
+		back.setName("tfQuizBack");
 		back.addMouseListener(new BackAdapter());
 		back.setMaximumSize(new Dimension(500, 100));
 		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -59,7 +58,7 @@ public class MCQuizPanel extends JPanel{
 		
 		// setup next question button
 		JButton nextQ = new JButton("Next Question");
-		nextQ.setName("mcNextQuestion");
+		nextQ.setName("tfNextQuestion");
 		nextQ.addMouseListener(new QuizAdapter());
 		nextQ.setMaximumSize(new Dimension(500, 100));
 		nextQ.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -74,7 +73,7 @@ public class MCQuizPanel extends JPanel{
 		topBar.add(Box.createRigidArea(new Dimension(30, 0)));
 		
 		// setup 2nd title
-		JLabel quizTitle2 = new JLabel("Which of these options matches the title?", SwingConstants.CENTER);
+		JLabel quizTitle2 = new JLabel("Is it true that the title matches the description below?", SwingConstants.CENTER);
 		quizTitle2.setMaximumSize(new Dimension(1000, 100));
 		quizTitle2.setAlignmentX(0.5f);
 		quizTitle2.setVerticalTextPosition(SwingConstants.CENTER);
@@ -84,37 +83,37 @@ public class MCQuizPanel extends JPanel{
 		titleArea = new JTextArea();
 		titleArea.setWrapStyleWord(true);
 		titleArea.setLineWrap(true);
-		titleArea.setMaximumSize(new Dimension(1000, 100));
+		titleArea.setMaximumSize(new Dimension(1000, 300));
 		titleArea.setEditable(false);
 		titleArea.setBackground(Main.color2);
 		
 		JPanel titleView = new JPanel();
 		titleView.setAlignmentX(0.5f);
 		titleView.setBackground(Main.color1);
-		titleView.setMaximumSize(new Dimension(1000, 100));
+		titleView.setMaximumSize(new Dimension(1000, 300));
 		titleView.setLayout(new BoxLayout(titleView, BoxLayout.LINE_AXIS));
-		
+
 		titleView.add(Box.createRigidArea(new Dimension(30, 0)));
 		titleView.add(titleArea);
 		titleView.add(Box.createRigidArea(new Dimension(30, 0)));
 		
-		// setup text area for options
-		optionArea = new JTextArea();
-		optionArea.setWrapStyleWord(true);
-		optionArea.setLineWrap(true);
-		optionArea.setMaximumSize(new Dimension(1000, 600));
-		optionArea.setEditable(false);
-		optionArea.setBackground(Main.color2);
+		// setup text area for desc
+		descArea = new JTextArea();
+		descArea.setWrapStyleWord(true);
+		descArea.setLineWrap(true);
+		descArea.setMaximumSize(new Dimension(1000, 300));
+		descArea.setEditable(false);
+		descArea.setBackground(Main.color2);
 		
-		JPanel optionView = new JPanel();
-		optionView.setAlignmentX(0.5f);
-		optionView.setBackground(Main.color1);
-		optionView.setMaximumSize(new Dimension(1000, 600));
-		optionView.setLayout(new BoxLayout(optionView, BoxLayout.LINE_AXIS));
+		JPanel descView = new JPanel();
+		descView.setAlignmentX(0.5f);
+		descView.setBackground(Main.color1);
+		descView.setMaximumSize(new Dimension(1000, 300));
+		descView.setLayout(new BoxLayout(descView, BoxLayout.LINE_AXIS));
 		
-		optionView.add(Box.createRigidArea(new Dimension(30, 0)));
-		optionView.add(optionArea);
-		optionView.add(Box.createRigidArea(new Dimension(30, 0)));
+		descView.add(Box.createRigidArea(new Dimension(30, 0)));
+		descView.add(descArea);
+		descView.add(Box.createRigidArea(new Dimension(30, 0)));
 		
 		// setup bottom bar panel
 		JPanel botBar = new JPanel();
@@ -125,9 +124,9 @@ public class MCQuizPanel extends JPanel{
 		
 		// create reveal answer button
 		JButton reveal = new JButton("Reveal Answer");
-		reveal.setName("revealAnsMC");
+		reveal.setName("revealAnsTF");
 		reveal.addMouseListener(new QuizAdapter());
-		reveal.setMaximumSize(new Dimension(1000, 40));
+		reveal.setMaximumSize(new Dimension(1000, 50));
 		reveal.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		reveal.setAlignmentX(0.5f);
 		reveal.setAlignmentY(0.5f);
@@ -142,28 +141,21 @@ public class MCQuizPanel extends JPanel{
 		this.add(quizTitle2);
 		this.add(titleView);
 		this.add(Box.createRigidArea(new Dimension(0, 10)));
-		this.add(optionView);
+		this.add(descView);
 		this.add(Box.createRigidArea(new Dimension(0, 10)));
 		this.add(botBar);
 		this.add(Box.createRigidArea(new Dimension(0, 10)));
 	}
 	
-	public void setQuiz(MCQuiz quiz) {
+	public void setQuiz(TFQuiz quiz) {
 		curQuiz = quiz;
-		quizTitle.setText("MC Quiz for folder: " + curQuiz.getFolder().getName());
+		quizTitle.setText("TF Quiz for folder: " + curQuiz.getFolder().getName());
 		
 		// setup first question
 		curQuestion = quiz.getNext();
 		
 		titleArea.setText("Title: " + curQuestion.getTitle());
-		
-		ArrayList<String> options = curQuestion.getOptions();
-		optionArea.setText(
-			"a) " + options.get(0) + "\n\n" + 
-			"b) " + options.get(1) + "\n\n" + 
-			"c) " + options.get(2) + "\n\n" + 
-			"d) " + options.get(3) + "\n\n"
-		);
+		descArea.setText("Description: " + curQuestion.getDescription());
 	}
 	
 	public void nextQuestion() {
@@ -176,14 +168,7 @@ public class MCQuizPanel extends JPanel{
 		}
 		
 		titleArea.setText("Title: " + curQuestion.getTitle());
-		
-		ArrayList<String> options = curQuestion.getOptions();
-		optionArea.setText(
-			"a) " + options.get(0) + "\n\n" + 
-			"b) " + options.get(1) + "\n\n" + 
-			"c) " + options.get(2) + "\n\n" + 
-			"d) " + options.get(3) + "\n\n"
-		);
+		descArea.setText("Description: " + curQuestion.getDescription());
 	}
 	
 	public void revealAns() {
