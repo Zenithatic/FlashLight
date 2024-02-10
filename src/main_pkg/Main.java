@@ -12,7 +12,7 @@ public class Main{
 	public final static Font defaultFont = new Font("Arial", Font.PLAIN, 24);
 	public final static Font titleFont = new Font("Arial", Font.PLAIN, 32);
 	public final static Color color1 = new Color(255, 255, 204);
-	public final static Color color2 = new Color(255, 255, 179);
+	public final static Color color2 = new Color(238, 238, 123);
 	
 	// main method
 	public static void main(String[] args) {

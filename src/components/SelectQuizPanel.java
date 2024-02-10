@@ -28,7 +28,7 @@ public class SelectQuizPanel extends JPanel{
 		// initialize folders array list
 		folders = new ArrayList<Folder>();
 		
-		// setup choose folder view panel
+		// setup select quiz panel
 		this.setSize(Main.defaultDimension);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(Main.color1);
@@ -44,7 +44,7 @@ public class SelectQuizPanel extends JPanel{
 		JButton back = new JButton("Back");
 		back.setName("sqBack");
 		back.addMouseListener(new BackAdapter());
-		back.setMaximumSize(new Dimension(250, 100));
+		back.setMaximumSize(new Dimension(333, 100));
 		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		back.setAlignmentX(0.5f);
 		back.setAlignmentY(0.5f);
@@ -53,7 +53,7 @@ public class SelectQuizPanel extends JPanel{
 		JButton mcQuiz = new JButton("Create MC quiz");
 		mcQuiz.setName("openMC");
 		mcQuiz.addMouseListener(new QuizAdapter());
-		mcQuiz.setMaximumSize(new Dimension(250, 100));
+		mcQuiz.setMaximumSize(new Dimension(333, 100));
 		mcQuiz.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		mcQuiz.setAlignmentX(0.5f);
 		mcQuiz.setAlignmentY(0.5f);
@@ -62,7 +62,7 @@ public class SelectQuizPanel extends JPanel{
 		JButton tfQuiz = new JButton("Create TF quiz");
 		tfQuiz.setName("openTF");
 		tfQuiz.addMouseListener(new QuizAdapter());
-		tfQuiz.setMaximumSize(new Dimension(250, 100));
+		tfQuiz.setMaximumSize(new Dimension(333, 100));
 		tfQuiz.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		tfQuiz.setAlignmentX(0.5f);
 		tfQuiz.setAlignmentY(0.5f);

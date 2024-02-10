@@ -6,9 +6,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
+import components.MCQuizPanel;
 import components.SelectQuizPanel;
 import main_pkg.Main;
-import my_classes.MCQuestion;
 import my_classes.MCQuiz;
 import my_classes.TFQuestion;
 import my_classes.TFQuiz;
@@ -37,20 +37,14 @@ public class QuizAdapter extends MouseAdapter {
 				JOptionPane.showMessageDialog(sqp, "Need 4 cards to create quiz!", "Warning", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
-			MCQuiz quiz = new MCQuiz(sqp.getFolder(sqp.getSelected()));
-			MCQuestion curQ = quiz.getNext();
-			
-			while (curQ != null) {
-				System.out.println("Title: " + curQ.getTitle() + ", options:");
-				for (int i = 0; i < curQ.getOptions().size(); i++) {
-					System.out.println(curQ.getOptions().get(i));
-				}
-				System.out.print("Answer: " + curQ.getAnswer());
-				System.out.println("\n");
 				
-				curQ = quiz.getNext();
-			}
+			MCQuiz quiz = new MCQuiz(sqp.getFolder(sqp.getSelected()));
+			
+			MCQuizPanel mcqp = Main.getMainFrame().getMcQuizPanel();
+			mcqp.setQuiz(quiz);
+			Main.getMainFrame().changePanel(Main.getMainFrame().getMcQuizPanel());
+
+			
 			
 		}
 		else if (compName.equals("openTF")) {
@@ -78,6 +72,12 @@ public class QuizAdapter extends MouseAdapter {
 				curQ = quiz.getNext();
 			}
 			
+		}
+		else if (compName.equals("mcNextQuestion")) {
+			Main.getMainFrame().getMcQuizPanel().nextQuestion();
+		}
+		else if (compName.equals("revealAnsMC")) {
+			Main.getMainFrame().getMcQuizPanel().revealAns();
 		}
 	}
 }

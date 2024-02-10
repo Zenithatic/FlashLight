@@ -17,6 +17,7 @@ public class MainFrame extends JFrame{
 	private TableViewPanel tableViewPanel;
 	private SlideshowViewPanel slideshowViewPanel;
 	private SelectQuizPanel selectQuizPanel;
+	private MCQuizPanel mcQuizPanel;
 	
 	public MainFrame() {
 		// setup mainframe
@@ -37,6 +38,7 @@ public class MainFrame extends JFrame{
 		tableViewPanel = new TableViewPanel();
 		slideshowViewPanel = new SlideshowViewPanel();
 		selectQuizPanel = new SelectQuizPanel();
+		mcQuizPanel = new MCQuizPanel();
 	}
 	
 	public void changePanel(JPanel panel) {
@@ -81,5 +83,9 @@ public class MainFrame extends JFrame{
 
 	public SelectQuizPanel getSelectQuizPanel() {
 		return selectQuizPanel;
+	}
+
+	public MCQuizPanel getMcQuizPanel() {
+		return mcQuizPanel;
 	}
 }

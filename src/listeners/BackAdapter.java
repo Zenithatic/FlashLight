@@ -34,5 +34,8 @@ public class BackAdapter extends MouseAdapter{
 		else if (compName.equals("sqBack")) {
 			Main.getMainFrame().changePanel(Main.getMainFrame().getHomePanel());
 		}
+		else if (compName.equals("mcQuizBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getSelectQuizPanel());
+		}
 	}	
 }
