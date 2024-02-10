@@ -8,6 +8,7 @@ import listeners.BackAdapter;
 import listeners.CreateCardAdapter;
 import main_pkg.Main;
 
+@SuppressWarnings("serial")
 public class CreateCardPanel extends JPanel{
 	private JLabel title;
 	private JTextField name;

@@ -8,6 +8,7 @@ import listeners.BackAdapter;
 import listeners.CreateFolderAdapter;
 import main_pkg.Main;
 
+@SuppressWarnings("serial")
 public class CreateFolderPanel extends JPanel{
 	JTextField name;
 	JLabel title;

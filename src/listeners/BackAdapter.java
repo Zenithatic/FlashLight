@@ -31,5 +31,8 @@ public class BackAdapter extends MouseAdapter{
 		else if (compName.equals("svBack")) {
 			Main.getMainFrame().changePanel(Main.getMainFrame().getChooseFolderViewPanel());
 		}
+		else if (compName.equals("sqBack")) {
+			Main.getMainFrame().changePanel(Main.getMainFrame().getHomePanel());
+		}
 	}	
 }

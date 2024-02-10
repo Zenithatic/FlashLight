@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 
+@SuppressWarnings("serial")
 public class CardTableCellRenderer extends JTextArea implements TableCellRenderer{
 	
 	public CardTableCellRenderer() {

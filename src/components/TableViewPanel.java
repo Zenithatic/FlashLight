@@ -19,6 +19,7 @@ import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
 
+@SuppressWarnings("serial")
 public class TableViewPanel extends JPanel{
 	private Folder currentFolder;
 	private JScrollPane tableScrollPane;

@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame{
 	
 	private HomePanel homePanel;
@@ -15,6 +16,7 @@ public class MainFrame extends JFrame{
 	private ChooseFolderViewPanel chooseFolderViewPanel;
 	private TableViewPanel tableViewPanel;
 	private SlideshowViewPanel slideshowViewPanel;
+	private SelectQuizPanel selectQuizPanel;
 	
 	public MainFrame() {
 		// setup mainframe
@@ -34,6 +36,7 @@ public class MainFrame extends JFrame{
 		chooseFolderViewPanel = new ChooseFolderViewPanel();
 		tableViewPanel = new TableViewPanel();
 		slideshowViewPanel = new SlideshowViewPanel();
+		selectQuizPanel = new SelectQuizPanel();
 	}
 	
 	public void changePanel(JPanel panel) {
@@ -74,5 +77,9 @@ public class MainFrame extends JFrame{
 
 	public SlideshowViewPanel getSlideshowViewPanel() {
 		return slideshowViewPanel;
+	}
+
+	public SelectQuizPanel getSelectQuizPanel() {
+		return selectQuizPanel;
 	}
 }

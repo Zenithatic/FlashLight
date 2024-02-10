@@ -11,9 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import listeners.ManageFoldersAdapter;
+import listeners.QuizAdapter;
 import listeners.ViewFolderAdapter;
 import main_pkg.Main;
 
+@SuppressWarnings("serial")
 public class HomePanel extends JPanel{
 	
 	public HomePanel() {
@@ -31,7 +33,7 @@ public class HomePanel extends JPanel{
 		
 		// create manage cards button
 		JButton manageCards = new JButton("Manage Cards");
-		manageCards.setMaximumSize(new Dimension(400, 300));
+		manageCards.setMaximumSize(new Dimension(400, 200));
 		manageCards.setAlignmentX(0.5f);
 		manageCards.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		manageCards.setFont(Main.titleFont);
@@ -40,11 +42,20 @@ public class HomePanel extends JPanel{
 		// create view cards button
 		JButton viewCards = new JButton("View Cards");
 		viewCards.setName("view1");
-		viewCards.setMaximumSize(new Dimension(400, 300));
+		viewCards.setMaximumSize(new Dimension(400, 200));
 		viewCards.setAlignmentX(0.5f);
 		viewCards.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		viewCards.setFont(Main.titleFont);
 		viewCards.addMouseListener(new ViewFolderAdapter());
+		
+		// create start quiz button
+		JButton quiz = new JButton("Quiz Yourself");
+		quiz.setName("quiz");
+		quiz.setMaximumSize(new Dimension(400, 200));
+		quiz.setAlignmentX(0.5f);
+		quiz.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		quiz.setFont(Main.titleFont);
+		quiz.addMouseListener(new QuizAdapter());
 		
 		// add components to panel
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -53,6 +64,8 @@ public class HomePanel extends JPanel{
 		this.add(manageCards);
 		this.add(Box.createRigidArea(new Dimension(0, 50)));
 		this.add(viewCards);
+		this.add(Box.createRigidArea(new Dimension(0, 50)));
+		this.add(quiz);
 		this.add(Box.createRigidArea(new Dimension(0, 50)));
 	}
 }

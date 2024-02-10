@@ -18,6 +18,7 @@ import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
 
+@SuppressWarnings("serial")
 public class ChooseFolderViewPanel extends JPanel{
 	private JTable folderTable;
 	private JScrollPane tableScrollPane;

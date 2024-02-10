@@ -26,6 +26,7 @@ import main_pkg.Main;
 import my_classes.Card;
 import my_classes.Folder;
 
+@SuppressWarnings("serial")
 public class SlideshowViewPanel extends JPanel{
 	private Folder currentFolder;
 	private ArrayList<Card> cards;

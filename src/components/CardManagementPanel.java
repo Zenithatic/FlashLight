@@ -21,6 +21,7 @@ import main_pkg.Main;
 import my_classes.Folder;
 import utils.Utils;
 
+@SuppressWarnings("serial")
 public class CardManagementPanel extends JPanel{
 	private Folder currentFolder;
 	private JScrollPane tableScrollPane;
