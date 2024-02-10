@@ -2,13 +2,15 @@ package my_classes;
 
 import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Stack;
 
 
 public class TFQuiz extends Quiz {
-	private Queue<TFQuestion> questions;
+	private Stack<TFQuestion> questions;
 	
 	public TFQuiz(Folder folder) {
 		super(folder);
+		questions = new Stack<TFQuestion>();
 		
 		// generate 5 questions
 		for (int i = 0; i < 5; i++) {
@@ -16,20 +18,20 @@ public class TFQuiz extends Quiz {
 			ArrayList<Card> cards = (ArrayList<Card>) folder.getCards().clone();
 			
 			// generate random index for random card
-			int idx = (int) Math.random() * cards.size();
+			int idx = (int) (Math.random() * cards.size());
 			String title = cards.get(idx).getTitle();
 			String desc;
 			String ans;
 			
 			// randomly choose to make it true or false
-			int oneZero = (int) Math.random() * 2;
+			int oneZero = (int) (Math.random() * 2);
 			
 			if (oneZero == 0) {
 				// false
 				cards.remove(idx);
 				
 				// find random description
-				int idx2 = (int) Math.random() * cards.size();
+				int idx2 = (int) (Math.random() * cards.size());
 				desc = cards.get(idx2).getDescription();
 				ans = "false";
 				
@@ -51,7 +53,7 @@ public class TFQuiz extends Quiz {
 	
 	public TFQuestion getNext() {
 		if (questions.size() >= 1) {
-			return questions.remove();
+			return questions.pop();
 		}
 		else {
 			return null;
@@ -59,6 +61,6 @@ public class TFQuiz extends Quiz {
 	}
 	
 	public void addQuestion(TFQuestion q) {
-		questions.add(q);
+		questions.push(q);
 	}
 }

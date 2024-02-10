@@ -6,7 +6,7 @@ public class Question {
 	
 	public Question(String t, String a) {
 		title = t;
-		a = answer;
+		answer = a;
 	}
 	
 	public String getTitle() {
