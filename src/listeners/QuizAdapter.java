@@ -11,7 +11,6 @@ import components.SelectQuizPanel;
 import components.TFQuizPanel;
 import main_pkg.Main;
 import my_classes.MCQuiz;
-import my_classes.TFQuestion;
 import my_classes.TFQuiz;
 
 
