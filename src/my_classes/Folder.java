@@ -17,6 +17,10 @@ public class Folder {
 		cards = new ArrayList<Card>();
 	}
 	
+	public ArrayList<Card> getCards() {
+		return this.cards;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -46,10 +50,6 @@ public class Folder {
 		}
 	}
 	
-	public ArrayList<Card> getCards() {
-		return this.cards;
-	}
-	
 	public void createCard(String name, String desc) {
 		Card card = new Card(name, desc, System.currentTimeMillis());
 		cards.add(card);
@@ -68,8 +68,7 @@ public class Folder {
 			
 			// write cards into file
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			
-			
+					
 			for (int i = 0; i < cards.size(); i++) {
 				Card cur = cards.get(i);
 				String name = cur.getTitle();
