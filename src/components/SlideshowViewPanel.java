@@ -7,6 +7,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -108,6 +109,7 @@ public class SlideshowViewPanel extends JPanel{
 		mainCard.setBackground(Color.WHITE);
 		mainCard.setBorder(new CompoundBorder(mainCard.getBorder(), new EmptyBorder(20, 30, 20, 30)));
 		mainCard.setOpaque(true);
+		mainCard.setLocale(new Locale("zh", "CN"));
 		
 		// add card view to view panel
 		cardView.add(Box.createRigidArea(new Dimension(30, 0)));

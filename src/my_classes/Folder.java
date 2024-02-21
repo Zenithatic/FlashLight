@@ -60,11 +60,7 @@ public class Folder {
 			File file = new File("./cardsets/" + name + ".txt");
 			
 			// clear file first
-			FileWriter fw = new FileWriter(file, false);
-			PrintWriter pw = new PrintWriter(fw, false);
-			pw.flush();
-			pw.close();
-			fw.close();
+			new PrintWriter(file).close();
 			
 			// write cards into file
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));

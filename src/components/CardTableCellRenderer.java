@@ -2,6 +2,7 @@ package components;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.Locale;
 
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -15,6 +16,7 @@ public class CardTableCellRenderer extends JTextArea implements TableCellRendere
 		setWrapStyleWord(true);
 		setLineWrap(true);
 		setPreferredSize(new Dimension(300, 50));
+		setLocale(new Locale("zh", "CN"));
 	}
 
 	@Override

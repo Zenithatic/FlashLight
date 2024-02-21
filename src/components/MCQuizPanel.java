@@ -4,6 +4,7 @@ package components;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -87,6 +88,7 @@ public class MCQuizPanel extends JPanel{
 		titleArea.setMaximumSize(new Dimension(1000, 100));
 		titleArea.setEditable(false);
 		titleArea.setBackground(Main.color2);
+		titleArea.setLocale(new Locale("zh", "CN"));
 		
 		JPanel titleView = new JPanel();
 		titleView.setAlignmentX(0.5f);
@@ -105,6 +107,7 @@ public class MCQuizPanel extends JPanel{
 		optionArea.setMaximumSize(new Dimension(1000, 600));
 		optionArea.setEditable(false);
 		optionArea.setBackground(Main.color2);
+		optionArea.setLocale(new Locale("zh", "CN"));
 		
 		JPanel optionView = new JPanel();
 		optionView.setAlignmentX(0.5f);

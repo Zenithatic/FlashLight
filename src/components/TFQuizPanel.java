@@ -3,6 +3,7 @@ package components;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.util.Locale;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -86,6 +87,7 @@ public class TFQuizPanel extends JPanel{
 		titleArea.setMaximumSize(new Dimension(1000, 300));
 		titleArea.setEditable(false);
 		titleArea.setBackground(Main.color2);
+		titleArea.setLocale(new Locale("zh", "CN"));
 		
 		JPanel titleView = new JPanel();
 		titleView.setAlignmentX(0.5f);
@@ -104,6 +106,7 @@ public class TFQuizPanel extends JPanel{
 		descArea.setMaximumSize(new Dimension(1000, 300));
 		descArea.setEditable(false);
 		descArea.setBackground(Main.color2);
+		descArea.setLocale(new Locale("zh", "CN"));
 		
 		JPanel descView = new JPanel();
 		descView.setAlignmentX(0.5f);

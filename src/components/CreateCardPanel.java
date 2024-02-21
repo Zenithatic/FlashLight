@@ -1,6 +1,7 @@
 package components;
 
 import java.awt.Dimension;
+import java.util.Locale;
 
 import javax.swing.*;
 
@@ -32,6 +33,7 @@ public class CreateCardPanel extends JPanel{
 		name.setAlignmentX(0.5f);
 		name.setHorizontalAlignment(SwingConstants.CENTER);
 		name.setMaximumSize(new Dimension(400, 100));
+		name.setLocale(new Locale("zh", "CN"));
 		
 		// create desc area
 		desc = new JTextField();
@@ -39,6 +41,7 @@ public class CreateCardPanel extends JPanel{
 		desc.setAlignmentX(0.5f);
 		desc.setHorizontalAlignment(SwingConstants.CENTER);
 		desc.setMaximumSize(new Dimension(400, 100));
+		desc.setLocale(new Locale("zh", "CN"));
 		
 		// make create card button
 		JButton createButton = new JButton("Create");
