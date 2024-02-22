@@ -16,7 +16,7 @@ public class CardTableCellRenderer extends JTextArea implements TableCellRendere
 		setWrapStyleWord(true);
 		setLineWrap(true);
 		setPreferredSize(new Dimension(300, 50));
-		setLocale(new Locale("zh", "CN"));
+		setLocale(Locale.SIMPLIFIED_CHINESE);
 	}
 
 	@Override

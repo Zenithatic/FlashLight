@@ -1,11 +1,16 @@
 package my_classes;
 
 import java.io.BufferedReader;
+import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Folder {
@@ -29,7 +34,7 @@ public class Folder {
 		cards.clear();
 		try {
 			File file = new File("./cardsets/" + name + ".txt");
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
 			
 			String line;
 			while ((line = reader.readLine()) != null) {
@@ -63,7 +68,7 @@ public class Folder {
 			new PrintWriter(file).close();
 			
 			// write cards into file
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8));
 					
 			for (int i = 0; i < cards.size(); i++) {
 				Card cur = cards.get(i);
